@@ -1,0 +1,18 @@
+﻿@model Demo.Controllers.SampleViewModel
+
+@{
+    ViewBag.Title = "Method3";
+}
+
+<h2>DropDownListFor - Method 3</h2>
+<h3>@("ViewModel - IEnumerable<selectlistitem> - POST")</h3>
+<hr/>
+<form action="@Url.Action("Method3", "Sample2")" method="POST">
+
+    Categories：
+    <br/>
+    @Html.DropDownListFor(x => x.CategoryList, Model.CategoryList, "", new { @class = "form-control" })
+    <br/>
+    <input type="submit" class="btn btn-success" value="送出"/>
+
+</form>    

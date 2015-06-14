@@ -1,0 +1,12 @@
+﻿@model Demo.Controllers.Sample2ViewModel
+
+@{
+    ViewBag.Title = "Method1";
+}
+
+<h2>DropDownListFor - Method 1</h2>
+<h3>@("ViewModel - IEnumerable<SelectListItem>")</h3>
+<hr />
+Categories：@Html.DropDownListFor(x => x.CategoryList, Model.CategoryList)
+<br />
+Categories：@Html.DropDownListFor(x => x.CategoryList, Model.CategoryList, "", new { @class = "form-control" })

@@ -1,0 +1,166 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>連動下拉選單</h2>
+<h3>使用 jQuery 的 Ajax 來實作連動下拉選單 - 三層式連動下拉選單</h3>
+<div class="row">
+    <div class="col-md-12">
+        <h2>相關文章</h2>
+        <p>
+            <a href="http://kevintsengtw.blogspot.tw/2012/05/jquery_29.html" target="_blank">
+                jQuery 練習題：三層式連動下拉選單（無後端整合）
+            </a>
+        </p>
+        <p>
+            <a href="http://kevintsengtw.blogspot.tw/2012/07/aspnet-mvc-3.html" target="_blank">
+                ASP.NET MVC 3 - 基本三層連動式下拉選單應用
+            </a>
+        </p>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        @ViewBag.Message
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="Customers">Customers</label>
+            @Html.DropDownList(
+                "Customers",
+                (SelectList)ViewBag.SelectList,
+                "請選擇客戶",
+                new { id = "Customers", @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="Orders">Orders</label>
+            <select id="Orders" name="orders" class="form-control">
+                <option>------</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="Products">Products</label>
+            <select id="Products" name="Products" class="form-control">
+                <option>------</option>
+            </select>
+        </div>
+    </div>
+</div>
+<p>
+    <input type="button" id="ButtonReset" class="btn btn-default" value="清除"/>
+    <input type="button" id="ButtonSubmit" class="btn btn-primary" value="顯示產品資訊"/>
+</p>
+
+<div id="ProductInfo"></div>
+
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $('#Customers').change(function () { ChangeCustomer(); });
+        $('#Orders').change(function () { ChangeOrder(); });
+        $('#Products').change(function () { ChangeProduct(); });
+
+        $('#ButtonSubmit').hide().click(function () { DisplayProductInfo(); });
+        $('#ButtonReset').click(function () { ResetContent(); });
+    });
+
+    function ResetContent() {
+        $('#Customers option:eq(0)').attr('selected', true);
+        $('#Orders').empty();
+        $('#Products').empty();
+        $('#ButtonSubmit').hide();
+        $('#ProductInfo').empty();
+    }
+
+    function ChangeCustomer() {
+        var selectedValue = $('#Customers option:selected').val();
+        if ($.trim(selectedValue).length > 0) {
+            GetOrders(selectedValue);
+        }
+    }
+
+    function GetOrders(customerID) {
+        $.ajax({
+            url: '@Url.Action("Orders", "Sample5")',
+            data: { customerID: customerID },
+            type: 'post',
+            cache: false,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.length > 0) {
+                    $('#Orders').empty();
+                    $('#Orders').append($('<option></option>').val('').text('請選擇訂單'));
+                    $.each(data, function (i, item) {
+                        $('#Orders').append($('<option></option>').val(item.Key).text(item.Value));
+                    });
+                }
+            }
+        });
+    }
+
+    function ChangeOrder() {
+        var selectedValue = $('#Orders option:selected').val();
+        if ($.trim(selectedValue).length > 0) {
+            GetProducts(selectedValue);
+        }
+    }
+
+    function GetProducts(orderID) {
+        $.ajax({
+            url: '@Url.Action("Products", "Sample5")',
+            data: { orderID: orderID },
+            type: 'post',
+            cache: false,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.length > 0) {
+                    $('#Products').empty();
+                    $('#Products').append($('<option></option>').val('').text('請選擇產品'));
+                    $.each(data, function (i, item) {
+                        $('#Products').append($('<option></option>').val(item.Key).text(item.Value));
+                    });
+                }
+            }
+        });
+    }
+
+    function ChangeProduct() {
+        var selectedValue = $('#Products option:selected').val();
+        if ($.trim(selectedValue).length > 0) {
+            $('#ButtonSubmit').show();
+        }
+        else {
+            $('#ButtonSubmit').hide();
+            $('#ProductInfo').empty();
+        }
+    }
+
+    function DisplayProductInfo() {
+        var selectedValue = $('#Products option:selected').val();
+        if ($.trim(selectedValue).length > 0) {
+            $.ajax({
+                url: '@Url.Action("ProductInfo", "Sample5")',
+                data: { productID: selectedValue },
+                type: 'post',
+                cache: false,
+                async: false,
+                dataType: 'html',
+                success: function (data) {
+                    if (data.length > 0) {
+                        $('#ProductInfo').empty();
+                        $('#ProductInfo').html(data);
+                    }
+                }
+            });
+        }
+    }
+</script>

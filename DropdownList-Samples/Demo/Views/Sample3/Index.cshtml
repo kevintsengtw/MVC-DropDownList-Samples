@@ -1,0 +1,35 @@
+﻿@model Demo.Controllers.Sample3ViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>連動下拉選單</h2>
+<h3>基本操作</h3>
+
+@using (Html.BeginForm("Index", "Sample3", FormMethod.Post, new { role = "form" }))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Category">分類</label>
+                @Html.DropDownListFor(x => x.Category,
+                    Model.Categories,
+                    "請選擇",
+                    new { name = "Category", @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Product">產品</label>
+                @Html.DropDownListFor(x => x.Product,
+                    Model.Products,
+                    Model.Products.Any()
+                        ? "請選擇"
+                        : "",
+                    new { name = "Product", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+}

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SelectListItem>
+
+@{
+    ViewBag.Title = "Method1";
+}
+
+<h2>DropDownList - Method 1</h2>
+<h3>@Html.Raw("DropDownList(HtmlHelper, String, IEnumerable<selectlistitem>)")</h3>
+<h3>使用 Model</h3>
+<hr />
+Categories：@Html.DropDownList("Categories", Model, "", new { @class = "form-control" })

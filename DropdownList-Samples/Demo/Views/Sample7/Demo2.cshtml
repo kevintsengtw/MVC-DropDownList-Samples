@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Demo";
+
+    var productItems = ViewBag.ProductItems as List<SelectListItem>;
+}
+
+<h2>Demo2 - 使用 SelectListItem 類別的做法</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h3>相關文章</h3>
+        <p>
+            <a href="http://kevintsengtw.blogspot.tw/2014/07/aspnet-mvc-52-new-feature-optgroup-in.html" target="_blank">
+                ASP.NET MVC 5.2 New Feature - optgroup in DropDownList with SelectListItem
+            </a>
+        </p>
+    </div>
+</div>
+@Html.DropDownList("Product", productItems, "請選擇產品", new { @class = "form-control" })

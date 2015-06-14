@@ -1,0 +1,10 @@
+﻿@model SelectList
+@{
+    ViewBag.Title = "Method4";
+}
+
+<h2>DropDownList - Method 4</h2>
+<h3>DropDownList - SelectList 類別</h3>
+<h3>使用 Model</h3>
+<hr />
+Categories：@Html.DropDownList("Categories", Model, "", new { @class = "form-control" })

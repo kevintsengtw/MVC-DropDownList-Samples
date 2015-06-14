@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>連動下拉選單</h2>
+<h3>使用 jQuery 的 Ajax 來實作連動下拉選單</h3>
+<div class="row">
+    <div class="col-md-12">
+        <h2>相關文章</h2>
+        <p>
+            <a href="http://kevintsengtw.blogspot.tw/2011/09/jquery-dropdownlist-1.html" target="_blank">
+                jQuery 對下拉選單 DropDownList 的操作 - 1
+            </a>
+        </p>
+        <p>
+            <a href="http://kevintsengtw.blogspot.tw/2011/09/jquery-dropdownlist-2.html" target="_blank">
+                jQuery 對下拉選單 DropDownList 的操作 - 2：連動下拉選單
+            </a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="Category">分類</label>
+            @Html.DropDownList("Category",
+                (SelectList)ViewBag.Category, "請選擇", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="Product">產品</label>
+            <select id="Product" name="county" class="form-control"></select>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+        $('#Category').change(function() { ChangeCategory(); });
+    });
+
+    function ChangeCategory() {
+        var selectedValue = $('#Category option:selected').val();
+        if ($.trim(selectedValue).length > 0) {
+            GetProducts(selectedValue);
+        } else {
+            $('#Product').empty();
+        }
+    }
+
+    function GetProducts(category) {
+        $.ajax({
+            url: '@Url.Action("Products", "Sample4")',
+            data: { category: category },
+            type: 'post',
+            cache: false,
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+                if (data.length > 0) {
+                    $('#Product').empty();
+                    $('#Product').append($('<option></option>').val('').text('請選擇'));
+                    $.each(data, function(i, item) {
+                        $('#Product').append(
+                            $('<option></option>').val(item.Key).text(item.Value));
+                    });
+                }
+            }
+        });
+    }
+</script>

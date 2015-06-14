@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Method6";
+}
+
+<h2>DropDownList - Method 6</h2>
+<h3>DropDownList - SelectList 類別</h3>
+<h3>顯示已選取的項目</h3>
+<hr />
+<form action="@Url.Action("Method6", "Sample1")">
+    Categories：@Html.DropDownList("Category", (SelectList)ViewBag.Categories, "", new { @class = "form-control" })
+    <p></p>
+    <input type="submit" value="送出" class="btn btn-success" />
+</form>

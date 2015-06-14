@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>ASP.NET MVC 後端產生 DropDownList (自定義方法)</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h2>相關文章</h2>
+        <p>
+            <a href="http://kevintsengtw.blogspot.tw/2011/07/aspnet-mvc-dropdownlist.html" target="_blank">
+                ASP.NET MVC 後端產生 DropDownList
+            </a>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h3>Sample - 1</h3>
+        <p>
+            預設使用方式
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Sample1")" target="_blank">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h3>Sample - 2</h3>
+        <p>
+            加入使用 Html class Attribute
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Sample2")" target="_blank">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h3>Sample - 3</h3>
+        <p>
+            顯示已選取的項目
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Sample3")" target="_blank">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Sample - 4</h3>
+        <p>
+            指定使用 OptionLabel (使用預設文字)
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Sample4")" target="_blank">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h3>Sample - 5</h3>
+        <p>
+            指定使用 OptionLabel (使用自定義文字)
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Sample5")" target="_blank">Learn more &raquo;</a></p>
+    </div>
+</div>

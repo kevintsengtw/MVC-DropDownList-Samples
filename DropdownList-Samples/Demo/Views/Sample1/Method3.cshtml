@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Method3";
+}
+
+<h2>DropDownList - Method 3</h2>
+<h3>@Html.Raw("DropDownList(HtmlHelper, String, IEnumerable<selectlistitem>)")</h3>
+<h3>顯示已選取的項目</h3>
+<hr />
+<form action="@Url.Action("Method3", "Sample1")">
+    Categories：@Html.DropDownList("Category", (IEnumerable<SelectListItem>)ViewBag.Categories, "", new { @class = "form-control" })
+    <p></p>
+    <input type="submit" value="送出" class="btn btn-success" />
+</form>

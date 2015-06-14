@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>mrkt 的程式學習筆記</h1>
+    <p class="lead">
+        介紹 ASP.NET MVC 內建的 Html Helper - DropDownList。<br />
+        包含之前部落格文章裡曾經介紹過的一些有關 DropdownList 的內容，<br />
+        不過如果已經有在 GitHub 發佈過的就不會包含進來。
+    </p>
+    <p>
+        <a href="http://kevintsengtw.blogspot.tw/search/label/DropDownList" class="btn btn-primary btn-large" target="_blank">Learn more &raquo;</a>
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>DropDownList 的基本操作</h3>
+        <p>
+            基本 DropDownList 的操作方式.
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Sample1")" target="_blank">Learn more &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>DropDownListFor 的設定方式</h3>
+        <p>
+            強型別 Html Helper - DropDownListFor 的設定方式.
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Sample2")" target="_blank">Learn more &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>連動下拉選單 - 基本</h3>
+        <p>
+            介紹使用基本的操作方式實作連動下拉選單.
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Sample3")" target="_blank">Learn more &raquo;</a>
+        </p>        
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h3>連動下拉選單 - jQuery</h3>
+        <p>
+            使用 jQuery 的 Ajax 來實作連動下拉選單.
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Sample4")" target="_blank">Learn more &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>連動下拉選單 - jQuery</h3>
+        <p>
+            三層式連動下拉選單
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Sample5")" target="_blank">Learn more &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>EnumDropDownListFor 的設定方式</h3>
+        <p>
+            強型別 EnumDropDownListFor 的設定方式 (ASP.NET MVC 5.1 新功能).
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Sample6")" target="_blank">Learn more &raquo;</a>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <h3>ASP.NET MVC 後端產生 DropDownList (自定義方法)</h3>
+        <p>
+            由後端產生下拉選單的 MvcHtmlString.
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Custom")" target="_blank">Learn more &raquo;</a>
+        </p>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>ASP.NET MVC 5.2 New Feature - Support HTML optgroup in DropDownList</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h3>Sample 1</h3>
+        <p>
+            預設的作法, 使用 SelectList 類別.
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Demo1", "Sample7")" target="_blank">Learn more &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>Sample 2</h3>
+        <p>
+            使用 SelectListItem 類別的做法.
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Demo2", "Sample7")" target="_blank">Learn more &raquo;</a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>DropDownListFor 的設定方式</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h2>相關文章</h2>
+        <p>
+            <a href="http://kevintsengtw.blogspot.tw/2012/09/aspnet-mvc-3-dropdownlistfor.html" target="_blank">
+                ASP.NET MVC 3 - DropDownListFor 的設定方式
+            </a>
+        </p>
+        <p>
+            <a href="http://kevintsengtw.blogspot.tw/2013/09/aspnet-mvc-dropdownlist-viewdata-or.html" target="_blank">
+                當 ASP.NET MVC 的 DropDownList 遇到了 ViewData or ViewBag
+            </a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Method - 1</h2>
+        <p>
+            @("ViewModel - IEnumerable<SelectListItem>")
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Method1")" target="_blank">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Method - 2</h2>
+        <p>
+            @("ViewModel - SelectList")
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Method2")" target="_blank">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Method - 3</h2>
+        <p>
+            @("ViewModel - IEnumerable<selectlistitem> - POST")
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Method3")" target="_blank">Learn more &raquo;</a></p>
+    </div>
+</div>
